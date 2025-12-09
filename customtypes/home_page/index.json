@@ -1,0 +1,22 @@
+{
+  "format": "custom",
+  "id": "home_page",
+  "label": "home_page",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "centered_intro_search": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    }
+  }
+}

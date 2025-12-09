@@ -1,0 +1,66 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"location": {
+				"__TYPE__": "FieldContent",
+				"value": "soap",
+				"type": "Text"
+			},
+			"date_label": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Nulla quis exercitation Lorem dolore proident nisi voluptate amet consectetur aliqua aute fugiat et excepteur."
+						}
+					}
+				]
+			},
+			"time": {
+				"__TYPE__": "FieldContent",
+				"value": "enough",
+				"type": "Text"
+			},
+			"current_temperature": {
+				"__TYPE__": "FieldContent",
+				"value": "mine",
+				"type": "Text"
+			},
+			"min_max_temperatures": {
+				"__TYPE__": "FieldContent",
+				"value": "want",
+				"type": "Text"
+			},
+			"weather_description": {
+				"__TYPE__": "FieldContent",
+				"value": "capital",
+				"type": "Text"
+			},
+			"weather_icon": {
+				"__TYPE__": "ImageContent",
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1545239351-1141bd82e8a6",
+					"width": 3212,
+					"height": 3880
+				},
+				"url": "https://images.unsplash.com/photo-1545239351-1141bd82e8a6",
+				"width": 3212,
+				"height": 3880,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"alt": "peace"
+			}
+		},
+		"items": []
+	}
+]

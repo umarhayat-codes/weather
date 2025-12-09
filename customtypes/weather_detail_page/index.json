@@ -1,0 +1,31 @@
+{
+  "format": "custom",
+  "id": "weather_detail_page",
+  "label": "Weather Detail Page",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "search_bar": {
+              "type": "SharedSlice"
+            },
+            "weather_forecast": {
+              "type": "SharedSlice"
+            },
+            "weather_detail_list": {
+              "type": "SharedSlice"
+            },
+            "weather_overview": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    }
+  }
+}

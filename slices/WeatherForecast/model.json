@@ -1,0 +1,64 @@
+{
+  "type": "SharedSlice",
+  "id": "weather_forecast",
+  "name": "WeatherForecast",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Default display for a weather forecast with a fixed number of days and forecast details per day.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "section_title": {
+          "type": "Text",
+          "config": {
+            "label": "Section Title"
+          }
+        },
+        "rainy_weather": {
+          "type": "Image",
+          "config": {
+            "label": "rainy cloud weather",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "cloud_icon": {
+          "type": "Image",
+          "config": {
+            "label": "cloud icon",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "sunny_icon": {
+          "type": "Image",
+          "config": {
+            "label": "sunny icon",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "sun_cloud_icon": {
+          "type": "Image",
+          "config": {
+            "label": "sun cloud icon",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "cloud_storm_icon": {
+          "type": "Image",
+          "config": {
+            "label": "cloud storm icon",
+            "constraint": {},
+            "thumbnails": []
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

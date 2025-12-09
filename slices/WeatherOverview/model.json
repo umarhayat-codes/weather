@@ -1,0 +1,60 @@
+{
+  "type": "SharedSlice",
+  "id": "weather_overview",
+  "name": "WeatherOverview",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Standard weather summary card with primary weather information and visual indicator.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "location": {
+          "type": "Text",
+          "config": {
+            "label": "Location"
+          }
+        },
+        "date_label": {
+          "type": "StructuredText",
+          "config": {
+            "single": "paragraph",
+            "label": "Date"
+          }
+        },
+        "time": {
+          "type": "Text",
+          "config": {
+            "label": "Time"
+          }
+        },
+        "current_temperature": {
+          "type": "Text",
+          "config": {
+            "label": "Current Temperature"
+          }
+        },
+        "min_max_temperatures": {
+          "type": "Text",
+          "config": {
+            "label": "Min/Max Temperatures"
+          }
+        },
+        "weather_description": {
+          "type": "Text",
+          "config": {
+            "label": "Weather Description"
+          }
+        },
+        "weather_icon": {
+          "type": "Image",
+          "config": {
+            "label": "Weather Icon"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "type": "SharedSlice",
+  "id": "weather_detail_list",
+  "name": "WeatherDetailList",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Displays a static list of weather details with associated labels, values, and units. Suitable for showing key weather metrics for a given day.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "section_title": {
+          "type": "Text",
+          "config": {
+            "label": "Section Title"
+          }
+        },
+        "weather_items": {
+          "type": "Group",
+          "config": {
+            "label": "Weather Items",
+            "fields": {
+              "label": {
+                "type": "Text",
+                "config": {
+                  "label": "Label"
+                }
+              },
+              "value": {
+                "type": "Text",
+                "config": {
+                  "label": "Value"
+                }
+              },
+              "unit": {
+                "type": "Text",
+                "config": {
+                  "label": "Unit"
+                }
+              },
+              "icon": {
+                "type": "Image",
+                "config": {
+                  "label": "Icon"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

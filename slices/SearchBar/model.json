@@ -1,0 +1,31 @@
+{
+  "type": "SharedSlice",
+  "id": "search_bar",
+  "name": "SearchBar",
+  "variations": [
+    {
+      "id": "with_icon",
+      "name": "With Icon",
+      "description": "Search bar includes a leading icon and a placeholder text input.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "icon": {
+          "type": "Image",
+          "config": {
+            "constraint": {},
+            "label": "cloud_Icon"
+          }
+        },
+        "placeholder": {
+          "type": "Text",
+          "config": {
+            "label": "Placeholder Text"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

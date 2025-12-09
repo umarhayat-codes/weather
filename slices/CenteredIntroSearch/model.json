@@ -1,0 +1,45 @@
+{
+  "type": "SharedSlice",
+  "id": "centered_intro_search",
+  "name": "CenteredIntroSearch",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Standard intro with logo, heading, subtitle, and search bar.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "logo": {
+          "type": "Image",
+          "config": {
+            "label": "Logo",
+            "constraint": {}
+          }
+        },
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading2,strong,em",
+            "label": "Title"
+          }
+        },
+        "subtitle": {
+          "type": "StructuredText",
+          "config": {
+            "single": "paragraph",
+            "label": "Subtitle"
+          }
+        },
+        "search_placeholder": {
+          "type": "Text",
+          "config": {
+            "label": "Search Placeholder"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
