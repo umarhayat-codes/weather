@@ -1,6 +1,10 @@
-import { createClient as baseCreateClient, ClientConfig } from "@prismicio/client";
+import {
+  createClient as baseCreateClient,
+  ClientConfig,
+} from "@prismicio/client";
 import { enableAutoPreviews } from "@prismicio/next";
 import sm from "./slicemachine.config.json";
+import { PrismicRoute } from "@/types/weather";
 
 /**
  * The project's Prismic repository name.
@@ -14,7 +18,7 @@ export const repositoryName =
  * {@link https://prismic.io/docs/route-resolver#route-resolver}
  */
 // TODO: Update the routes array to match your project's route structure.
-const routes: any[] = [
+const routes: PrismicRoute[] = [
   // Examples:
   // { type: "homepage", path: "/" },
   // { type: "page", path: "/:uid" },
