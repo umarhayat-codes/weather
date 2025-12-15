@@ -5,6 +5,9 @@ import axios, { AxiosResponse } from "axios";
 import { useRouter } from "next/navigation";
 import { createClient } from "@prismicio/client";
 import { GeocodingResult, HomeSlicePrismic } from "@/types/weather";
+import mainBackground from "../assets/main_background.png";
+import smallBackground from "../assets/small_size_background.png";
+import Image from "next/image";
 
 export default function Page() {
   const router = useRouter();
@@ -78,45 +81,71 @@ export default function Page() {
   }, []);
 
   return (
-    <div className="min-h-screen w-full bg-[#131319] overflow-x-hidden">
-      <div className="flex items-center justify-center mt-12">
-        <h3 className="text-[#BFBFD4] font-nunito font-bold text-[21.65px]">
-          {homeSlicePrismic?.logo ? (
-            <img
-              src={homeSlicePrismic.logo.url}
-              alt={homeSlicePrismic.logo.alt || "Logo"}
-              width={homeSlicePrismic.logo.dimensions.width / 5}
-              height={homeSlicePrismic.logo.dimensions.height / 5}
-            />
-          ) : (
-            ""
-          )}
-        </h3>
+    <div className="min-h-screen w-full relative overflow-x-hidden text-white">
+      {/* Desktop Background Image */}
+      <div className="max-sm:hidden absolute inset-0 z-0">
+        <Image
+          src={mainBackground}
+          alt="Background"
+          fill
+          priority
+          quality={100}
+          className="w-full h-full"
+        />
       </div>
 
-      <div className="flex flex-col items-center mt-[160px] max-sm:mt-[193px]">
-        <h1
-          className="
+      {/* Mobile Background Image */}
+      <div className="sm:hidden absolute inset-0 z-0">
+        <Image
+          src={smallBackground}
+          alt="Background"
+          fill
+          priority
+          quality={100}
+          className="w-full h-full"
+        />
+      </div>
+
+      {/* Main content */}
+      <div className="relative z-10">
+        <div className="flex items-center justify-center mt-12">
+          <h3 className="text-[#BFBFD4] font-nunito font-bold text-[21.65px]">
+            {homeSlicePrismic?.logo ? (
+              <img
+                src={homeSlicePrismic.logo.url}
+                alt={homeSlicePrismic.logo.alt || "Logo"}
+                width={homeSlicePrismic.logo.dimensions.width / 5}
+                height={homeSlicePrismic.logo.dimensions.height / 5}
+              />
+            ) : (
+              ""
+            )}
+          </h3>
+        </div>
+
+        <div className="flex flex-col items-center mt-[160px] max-sm:mt-[193px]">
+          <h1
+            className="
             w-[450px] max-sm:w-[311px]
             font-nunito font-bold
             text-[32px] max-sm:text-[20px]
             text-center
           "
-        >
-          <span className="text-white">
-            {homeSlicePrismic?.heading?.[0]?.text?.split(" ")[0]}
-          </span>
-          <span> </span>
-          <span className="text-[#8FB2F5]">
-            {homeSlicePrismic?.heading?.[0]?.text
-              ?.split(" ")
-              .slice(1)
-              .join(" ")}
-          </span>
-        </h1>
+          >
+            <span className="text-[#FAFAFA]">
+              {homeSlicePrismic?.heading?.[0]?.text?.split(" ")[0]}
+            </span>
+            <span> </span>
+            <span className="text-[#FAFAFA] md:text-[#8FB2F5]">
+              {homeSlicePrismic?.heading?.[0]?.text
+                ?.split(" ")
+                .slice(1)
+                .join(" ")}
+            </span>
+          </h1>
 
-        <p
-          className="
+          <p
+            className="
             mt-[8px]
             w-[450px] max-sm:w-[311px]
             text-center
@@ -124,76 +153,80 @@ export default function Page() {
             text-[20px] max-sm:text-[14px]
             text-[#BFBFD4]
           "
-        >
-          {homeSlicePrismic?.subtitle?.[0]?.text}
-        </p>
+          >
+            {homeSlicePrismic?.subtitle?.[0]?.text}
+          </p>
 
-        <div className="relative mt-[56px]">
-          <input
-            type="text"
-            placeholder={homeSlicePrismic?.search_placeholder}
-            className="
-              w-[500px] max-sm:w-[311px]
-              h-[56px] rounded-[8px]
-              px-[20px] pr-[50px]
-              text-white placeholder:text-white
-              bg-transparent border border-black
-            "
-            value={city}
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              searchRelatedCities(e.target.value)
-            }
-            onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => {
-              if (e.key === "Enter") {
-                handleSearch();
-              }
-            }}
-          />
-
-          {loading && (
-            <div className="absolute right-4 top-1/2 -translate-y-1/2">
-              <div className="w-5 h-5 border-2 border-gray-400 border-t-white rounded-full animate-spin"></div>
-            </div>
-          )}
-        </div>
-
-        <div>
-          {suggestions.map((item: GeocodingResult, index: number) => (
-            <div
-              key={index}
+          <div className="relative mt-[56px]">
+            <input
+              type="text"
+              placeholder={homeSlicePrismic?.search_placeholder}
               className="
-                    w-[500px] max-sm:w-[311px]
-                    h-[56px]
-                    rounded-[8px]
+              w-[500px] max-sm:w-[300px]
+              h-[56px] 
+              border border-black
+              hover:border-[#86548dff]
+              px-[20px] pr-[50px]
+              placeholder:text-[#FAFAFA] placeholder:text-[16px] font-nunito
+              bg-[#1E1E29] outline-none mb-[8px]
+            "
+              value={city}
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                searchRelatedCities(e.target.value)
+              }
+              onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => {
+                if (e.key === "Enter") {
+                  handleSearch();
+                }
+              }}
+            />
+
+            {loading && (
+              <div className="absolute right-4 top-1/2 -translate-y-1/2">
+                <div className="w-5 h-5 border-2 border-gray-400 border-t-white rounded-full animate-spin"></div>
+              </div>
+            )}
+          </div>
+          <div>
+            {suggestions.map((item: GeocodingResult, index: number) => (
+              <div
+                key={index}
+                className="
+                    w-[500px] max-sm:w-[300px]
+                    h-[54px]
                     px-[20px]
-                    text-white
-                    bg-transparent border border-black
+                    border border-black
+                    hover:border-[#86548dff]
                     flex items-center
                     cursor-pointer
-                    hover:bg-[#1c1c25]"
-              onClick={async () => {
-                const selected = `${item.name}, ${item.country}`;
-                setCity(selected);
-                setSuggestions([]);
+                    bg-[#3B3B54]
+                    "
+                onClick={async () => {
+                  const selected = `${item.name}, ${item.country}`;
+                  setCity(selected);
+                  setSuggestions([]);
 
-                setTimeout(() => {
-                  handleSearch();
-                }, 100);
-              }}
-            >
-              <span className="font-nunito text-[18px]">{item.name},</span>
-
-              {item.state && (
-                <span className="ml-1 text-[#BFBFD4] text-[14px]">
-                  ({item.state})
+                  setTimeout(() => {
+                    handleSearch();
+                  }, 100);
+                }}
+              >
+                <span className="font-nunito text-[#FAFAFA] text-[16px]">
+                  {item.name},
                 </span>
-              )}
 
-              <span className="ml-1 text-[#BFBFD4] text-[14px]">
-                - {item.country}
-              </span>
-            </div>
-          ))}
+                {item.state && (
+                  <span className="font-nunito ml-1 text-[#FAFAFA] text-[16px]">
+                    ({item.state})
+                  </span>
+                )}
+
+                <span className="font-nunito ml-1 text-[#FAFAFA] text-[16px]">
+                  - {item.country}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

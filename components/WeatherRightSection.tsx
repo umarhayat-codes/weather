@@ -78,11 +78,22 @@ export default function WeatherRightSection({ weatherData, loading }: Props) {
     }
   };
 
+  const splitValueAndUnit = (value: string) => {
+    if (!value || value === "—") {
+      return { number: value, unit: "" };
+    }
+
+    const number = value.match(/-?\d+(\.\d+)?/)?.[0] ?? value;
+    const unit = value.replace(number, "");
+
+    return { number, unit };
+  };
+
   return (
     <div className="flex-1 flex flex-col gap-2 md:gap-4 lg:mt-0 ">
       {/* Top Box - Weather Rows (Prismic) */}
-      <div className="bg-[#1E1E29] rounded-xl pt-4 pb-4 px-4 md:p-6 h-[350px] xlg:max-h-[calc(50vh-48px)] xlg:overflow-hidden">
-        <p className="text-[#7F7F98] text-sm mb-4 hidden sm:block">
+      <div className="bg-[#1E1E29] rounded-xl pt-4 pb-4 px-4 md:p-6 h-[350px] md:h-[360px] xlg:max-h-[calc(50vh-48px)] xlg:overflow-hidden">
+        <p className="text-[#7F7F98] font-nunito text-[16px] mb-6 hidden sm:block">
           {detailListSlicePrismic?.primary.section_title}
         </p>
 
@@ -114,6 +125,7 @@ export default function WeatherRightSection({ weatherData, loading }: Props) {
                 default:
                   value = "—";
               }
+              const { number, unit } = splitValueAndUnit(value);
 
               return (
                 <div
@@ -126,11 +138,22 @@ export default function WeatherRightSection({ weatherData, loading }: Props) {
                       alt={item.icon.alt || item.label}
                       width={24}
                       height={24}
-                      className="object-contain"
+                      className="object-contain color-[#3B3B55]"
                     />
-                    <span className="text-white/70 text-sm">{item.label}</span>
+                    <span className="font-nunito font-bold text-[#BFBFD4] text-sm">
+                      {item.label}
+                    </span>
                   </div>
-                  <div className="text-white font-medium text-sm">{value}</div>
+
+                  <div className="font-nunito font-bold text-[#BFBFD4] ">
+                    <span className="text-[20px]  max-sm:text-[16px]">
+                      {number}
+                    </span>
+
+                    {unit && (
+                      <span className="text-[16px] ml-[2px]  ">{unit}</span>
+                    )}
+                  </div>
                 </div>
               );
             }
@@ -141,7 +164,7 @@ export default function WeatherRightSection({ weatherData, loading }: Props) {
       {/* Bottom Cards Box - Forecast */}
       <div className="bg-[#1E1E29] rounded-xl p-3 sm:p-6 xlg:h-[240px] overflow-hidden">
         {/* Title — hidden on small screens */}
-        <p className="text-[#7F7F98] text-sm mb-4 hidden sm:block">
+        <p className="text-[#7F7F98] text-[16px] font-nunito mb-4 hidden sm:block">
           {forecastSectionTitle}
         </p>
 
@@ -156,7 +179,7 @@ export default function WeatherRightSection({ weatherData, loading }: Props) {
                     key={idx}
                     className="flex-1 h-48 xlg:h-32 rounded-xl flex flex-col items-center pt-5"
                   >
-                    <p className="font-nunito font-bold text-[14px] text-white text-center">
+                    <p className="font-nunito font-bold text-[14px] text-[#BFBFD4] text-center">
                       {/* Small screens → show first 3 letters */}
                       <span className="block sm:hidden">
                         {info.day.slice(0, 3)}
@@ -176,7 +199,7 @@ export default function WeatherRightSection({ weatherData, loading }: Props) {
                     </div>
 
                     {/* Condition */}
-                    <p className="font-nunito font-light text-[14px] text-white pt-[10px]">
+                    <p className="font-nunito font-light text-[14px] text-[#BFBFD4] pt-[10px]">
                       {condition}
                     </p>
 
@@ -186,7 +209,7 @@ export default function WeatherRightSection({ weatherData, loading }: Props) {
                         {Math.round(info.max)}°C
                       </p>
 
-                      <p className="font-nunito text-[14px] text-white">
+                      <p className="font-nunito font-bold text-[14px] text-[#7F7F98]">
                         {Math.round(info.min)}°C
                       </p>
                     </div>
