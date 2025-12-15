@@ -81,7 +81,7 @@ export default function Page() {
   }, []);
 
   return (
-    <div className="min-h-screen w-full relative overflow-x-hidden text-white">
+    <div className="min-h-screen w-full bg-[#131319] relative overflow-x-hidden text-white">
       {/* Desktop Background Image */}
       <div className="max-sm:hidden absolute inset-0 z-0">
         <Image
